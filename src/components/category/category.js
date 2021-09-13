@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './category.styles.css';
 import NavBar from '../NavBar/NavBar';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 
 
 class Category extends Component {
@@ -176,7 +178,9 @@ static propTypes = {
               </div>
             </div>
             <div className="open-search">
- <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+            <Link to="/searchresult">
+                 <button>Add a book</button>
+            </Link> 
              
             </div>
           </div>
