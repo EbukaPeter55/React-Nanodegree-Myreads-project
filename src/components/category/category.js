@@ -11,7 +11,7 @@ static propTypes = {
 }
 
     state = {
-
+    booksData: ''
     }
     componentDidMount(){
         console.log(this.state.books);
@@ -19,7 +19,8 @@ static propTypes = {
     }
 
     render(){
-    
+    const { books } = this.props;
+     console.log(books);
         return (
             <div className="list-books">
             <NavBar/>
