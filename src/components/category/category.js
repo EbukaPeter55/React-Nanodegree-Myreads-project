@@ -130,7 +130,7 @@ static propTypes = {
               </div>
             </div>
             <div className="open-search">
-            <Link to="/searchresult">
+            <Link to="/search">
                  <button>Add a book</button>
             </Link> 
              
