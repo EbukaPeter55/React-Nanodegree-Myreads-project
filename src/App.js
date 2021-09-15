@@ -33,6 +33,7 @@ class BooksApp extends React.Component {
 
   updateBookShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
+    console.log(book)
     .then((shelf) => {
       this.setState((currentstate) => ({
         books: currentstate.books.concat([shelf])
@@ -41,10 +42,18 @@ class BooksApp extends React.Component {
   }
 
   searchBook = (query) => {
+    this.setState({
+      // Initialize books to an empty array to handle invalid
+      //  queries and prevent returning prior search results
+      books: []
+    })
     BooksAPI.search(query)
     .then((books)=> {
+      let removeBooksWithoutThumbnail = books.filter(book => book.imageLinks.thumbnail !== "");
+      console.log(removeBooksWithoutThumbnail);
+
       console.log(books);
-      Array.isArray(books) ?
+      Array.isArray(removeBooksWithoutThumbnail) ?
       this.setState({
         books
       }) 
@@ -74,6 +83,9 @@ class BooksApp extends React.Component {
           this.searchBook(query)
         }}
           books={this.state.books}
+          onUpdate={(book, shelf)=> {
+            this.updateBookShelf(book, shelf)
+          }}
           />
       )}/>     
       

@@ -17,11 +17,11 @@ class SearchResult extends Component {
 
     updateSearchQuery = (query) => {
       const { onSearchBook } = this.props;
-
+    
      onSearchBook(query);
     console.log(onSearchBook);
       this.setState(()=> ({
-          query: query.trim()
+          query
       }))
       
       }
@@ -88,6 +88,7 @@ class SearchResult extends Component {
                     </div>
                     <div className="book-title">{book.title}</div>
                     <div className="book-authors">{book.authors}</div>
+                
                     
                   </div>                    
                 
