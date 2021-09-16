@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './SearchResult.styles.css';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import BookLayoutGrid from '../BookLayoutGrid';
 
 
 class SearchResult extends Component {
@@ -30,7 +30,8 @@ class SearchResult extends Component {
     render(){
       // object destructuring to make the books standalone variable
       const { query } = this.state;
-      const { books } = this.props;
+      const { books, onUpdateBook } = this.props;
+
       // console.log(books);
 
       // const showingBooks = query === ''
@@ -72,27 +73,12 @@ class SearchResult extends Component {
                 ''
                 :
                 books.map(book =>
-            <li key={book.id}>                           
-                    <div className="book">
-                    <div className="book-top">
-                      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
-                      <div className="book-shelf-changer">
-                        <select>
-                          <option value="move" disabled>Move to...</option>
-                          <option value="currentlyReading">Currently Reading</option>
-                          <option value="wantToRead">Want to Read</option>
-                          <option value="read">Read</option>
-                          <option value="none">None</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="book-title">{book.title}</div>
-                    <div className="book-authors">{book.authors}</div>
-                
-                    
-                  </div>                    
-                
-              </li>
+              <BookLayoutGrid
+              book={book}
+              key={book.id}
+              onUpdateBook={onUpdateBook}
+              shelf={book.shelf ? book.shelf : 'none'}
+              />
               )
             }
               </ol>
