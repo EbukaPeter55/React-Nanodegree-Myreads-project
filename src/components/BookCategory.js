@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import BookLayoutGrid from "./BookLayoutGrid";
+import PropTypes from 'prop-types';
 
 
 class BookCategory extends Component {
+//    Set the expected proptypes we want to receive to enable strict typing
+static propTypes = {
+    books : PropTypes.array.isRequired ,
+    onUpdateBook: PropTypes.func.isRequired   
+}
+
 
     render() {
     const { books, category, onUpdateBook } = this.props;
@@ -11,7 +18,7 @@ class BookCategory extends Component {
     const selectedBooks = books.filter(book => {
         return book.shelf === category.key
     })
-    console.log(selectedBooks);
+    // console.log(selectedBooks);
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{category.name}</h2>

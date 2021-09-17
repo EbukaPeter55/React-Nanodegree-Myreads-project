@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchResult from './SearchResult';
-
-
+import PropTypes from 'prop-types';
 
 
 
 class SearchInputBooks extends Component {
+    //    Set the expected proptypes we want to receive to enable strict typing
+    static propTypes = {
+        books : PropTypes.array.isRequired,
+        booksSearch: PropTypes.array.isRequired,
+        onUpdateBook: PropTypes.func.isRequired,
+        onSearchBook: PropTypes.func.isRequired
+    }
 
     state = {
         value: ''

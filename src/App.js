@@ -37,8 +37,9 @@ class BooksApp extends React.Component {
 
   updateBookShelf = (book, shelf) => {
     BooksAPI.update(book, shelf);
+    // If the shelf is equals to none or the none is selected, filterout the book clicked
     if(shelf === 'none'){
-      this.setState(currentState =>({
+      this.setState(currentState =>({      
         books: currentState.books.filter(c => c.id !== book.id)
       }));
     }else {

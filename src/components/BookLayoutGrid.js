@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 
 
 class BookLayoutGrid extends Component {
+    //Set the expected proptypes we want to receive to enable strict typing
+    static propTypes = {
+        onUpdateBook: PropTypes.func.isRequired   
+    }
+
     state = {
         value: this.props.category
     }
