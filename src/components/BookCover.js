@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import BookCategory from './BookCategory';
+import PropTypes from 'prop-types';
+
 
 class BookCover extends Component {
+    //    Set the expected proptypes we want to receive to enable strict typing
+static propTypes = {
+    books : PropTypes.array.isRequired,
+    onUpdateBook: PropTypes.func.isRequired, 
+    bookCategories: PropTypes.array.isRequired  
+}
 
     render(){
     const { books, bookCategories, onUpdateBook } = this.props;

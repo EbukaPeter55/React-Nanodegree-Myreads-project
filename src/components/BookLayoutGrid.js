@@ -13,13 +13,14 @@ class BookLayoutGrid extends Component {
             value: newVal
         })
     // Destructure the object to have an access to the onUpdateBook
-    const { onUpdateBook } = this.props
+    // const { onUpdateBook } = this.props
 
-    onUpdateBook(this.props.book, newVal)
+    this.props.onUpdateBook(this.props.book, newVal)
     }
 
     render() {
-        const { book } = this.props
+        const { book, onUpdateBook } = this.props
+        console.log(onUpdateBook);
 
         return (
             <div>
@@ -39,7 +40,7 @@ class BookLayoutGrid extends Component {
                     </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors && book.authors.join(', ')}</div>
+                <div className="book-authors">{book.authors}</div>
             </div>
         </li>  
             </div>

@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 import * as BooksAPI from './BooksAPI';
 import Category from './components/category';
-import SearchResult from './components/SearchResult/SearchResult';
+import SearchInputBooks from './components/SearchInputBooks';
 import { Route } from 'react-router-dom';
 
 const bookCategories = [
@@ -14,7 +14,10 @@ const bookCategories = [
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    booksSearch: [],
+    display: ''
+
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -50,28 +53,29 @@ class BooksApp extends React.Component {
   };
 
   searchBook = (query) => {
-    this.setState({
-      // Initialize books to an empty array to handle invalid
-      //  queries and prevent returning prior search results
-      books: []
-    })
-    BooksAPI.search(query)
-    .then((books)=> {
-      let removeBooksWithoutThumbnail = books.filter(book => book.imageLinks.thumbnail !== "");
-      console.log(removeBooksWithoutThumbnail);
-
-      console.log(books);
-      Array.isArray(removeBooksWithoutThumbnail) ?
-      this.setState({
-        books
-      }) 
-      : 
-      this.setState({
-        books: []
+    if (query.length > 0) {
+      BooksAPI.search(query)
+      .then((books) => {
+        books.error 
+        ?
+        this.setState({
+          booksSearch: [],
+          display: "Invalid query, try another"
+          })
+          :
+          this.setState({ booksSearch: books });    
       })
-     })
-    .catch ( (error) =>{
-      return error;
+    } else {
+      this.setState({
+         booksSearch: [] 
+        });
+    }
+console.log(this.state.display);
+  }
+
+  resetSearch = () => {
+    this.setState({
+      booksSearch: []
     })
   }
 
@@ -84,17 +88,17 @@ class BooksApp extends React.Component {
         <Category 
         books={this.state.books}
         bookCategories={bookCategories}
-        onUpdateBook={this.updateBookShelf}
+        onUpdateBook={ this.updateBookShelf}
         />
       )}/>
       <Route path="/search" render={()=> (
-        <SearchResult
-        bookCategories={bookCategories}
-        onSearchBook={(query)=>{
-          this.searchBook(query)
-        }}
+        <SearchInputBooks
+          bookCategories={bookCategories}
+          onSearchBook={this.searchBook}
           books={this.state.books}
-          onUpdateBook={this.updateBookShelf}
+          booksSearch={this.state.booksSearch}
+          onUpdateBook={ this.updateBookShelf}
+          resetSearchArray={this.resetSearch}
           />
       )}/>     
       

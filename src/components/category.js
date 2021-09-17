@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar/NavBar';
-import PropTypes, { func } from 'prop-types';
+import PropTypes from 'prop-types';
 import BookCover from './BookCover';
 
 
