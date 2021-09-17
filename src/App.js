@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import * as BooksAPI from './BooksAPI';
-import Category from './components/category';
+import MainPage from './components/MainPage';
 import SearchInputBooks from './components/SearchInputBooks';
 import { Route } from 'react-router-dom';
 
@@ -81,7 +81,7 @@ console.log(this.state.display);
       <div className="app">
       {/*Path must match the URL to navigate to the main/category page*/}
       <Route exact path="/" render={()=> (
-        <Category 
+        <MainPage 
         books={this.state.books}
         bookCategories={bookCategories}
         onUpdateBook={ this.updateBookShelf}
