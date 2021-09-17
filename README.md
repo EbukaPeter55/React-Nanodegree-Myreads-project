@@ -5,7 +5,7 @@ I was provided witht the HTML, CSS and a backend API. I was meant to add the Rea
 to ensure books are properly displayed on a shelf, books can be moved from one shelf to another.
 Lastly, a search can be done for books that matches the query entered by users.
 
-For the movement of books, I was stucked for days, and couldn't get help from the chat room, but I later got a hint on how to go about it from @debjanipaul's Github repo: https://github.com/debjanipaul/myReads
+For the movement of books, I was stucked for days, and couldn't get help from the chat room, but I later got a hint on how to go about it from @debjanipaul's Github repo.
 
 Ebuka Peter
 
