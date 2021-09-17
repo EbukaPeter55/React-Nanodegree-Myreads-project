@@ -6,22 +6,22 @@ import SearchResult from './SearchResult';
 
 
 
-
 class SearchInputBooks extends Component {
+
     state = {
         value: ''
     }
 
-    handleChange = e => {
+    handleChange = event => {
         const { onSearchBook } = this.props
-        const newValue = e.target.value
+        const newValue = event.target.value
         this.setState({ value: newValue }, () => {
             onSearchBook(newValue)
         });
     };
 
     render() {
-        const { onUpdateBook, books, booksSearch, bookCategories,  onSearchBook,  }
+        const { onUpdateBook, books, booksSearch, bookCategories,  onSearchBook }
          = this.props
         return (
             <div className="search-books">

@@ -10,20 +10,16 @@ static propTypes = {
     books : PropTypes.array.isRequired ,
     onUpdateBook: PropTypes.func.isRequired   
 }
-
     render(){
     const { books, bookCategories, onUpdateBook } = this.props;
-
-    // console.log(books);
-
-  
+    // console.log(books);  
         return (
-          <div className="list-books">
-          <NavBar/>          
-          <BookCover books={books} bookCategories={bookCategories} onUpdateBook={onUpdateBook} />
-      </div>
-        )
-    }
+            <div className="list-books">
+                <NavBar/>          
+                <BookCover books={books} bookCategories={bookCategories} onUpdateBook={onUpdateBook} />
+            </div>
+                )
+            }
 }
 
 

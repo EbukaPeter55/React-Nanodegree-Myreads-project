@@ -14,18 +14,17 @@ class BookCategory extends Component {
     console.log(selectedBooks);
         return (
             <div className="bookshelf">
-            <h2 className="bookshelf-title">{category.name}</h2>
-            <div className="bookshelf-books">
-                <ol className="books-grid">
-                    {selectedBooks.map(book => (
-                        <BookLayoutGrid book={book} key={book.id} category={category.key} onUpdateBook={onUpdateBook} />
-                    ))}
-                </ol>
-            </div>
-
-            <div className="open-search">
-                <Link to='/search'>Add a book</Link>
-            </div>
+                <h2 className="bookshelf-title">{category.name}</h2>
+                <div className="bookshelf-books">
+                    <ol className="books-grid">
+                        {selectedBooks.map(book => (
+                            <BookLayoutGrid book={book} key={book.id} category={category.key} onUpdateBook={onUpdateBook} />
+                        ))}
+                    </ol>
+                </div>
+                <div className="open-search">
+                    <Link to='/search'>Add a book</Link>
+                </div>
         </div>
         );
     }

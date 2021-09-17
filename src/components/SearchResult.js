@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BookLayoutGrid from './BookLayoutGrid';
 
@@ -9,8 +8,6 @@ class SearchResult extends Component {
     books : PropTypes.array.isRequired,
     onSearchBook: PropTypes.func.isRequired
 }
-
-
   
     render(){
       // object destructuring to make the books standalone variable

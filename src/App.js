@@ -1,5 +1,4 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
 import './App.css'
 import * as BooksAPI from './BooksAPI';
 import Category from './components/category';
@@ -16,8 +15,6 @@ class BooksApp extends React.Component {
   state = {
     books: [],
     booksSearch: [],
-    display: ''
-
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -50,24 +47,23 @@ class BooksApp extends React.Component {
         books: currentState.books.filter(c => c.id !== book.id).concat(book)
       }));
     }
-  };
+  }
 
   searchBook = (query) => {
-    if (query.length > 0) {
+    if (!(query.length < 1)) {
       BooksAPI.search(query)
       .then((books) => {
         books.error 
         ?
         this.setState({
           booksSearch: [],
-          display: "Invalid query, try another"
           })
           :
           this.setState({ booksSearch: books });    
       })
     } else {
       this.setState({
-         booksSearch: [] 
+        booksSearch: [] 
         });
     }
 console.log(this.state.display);
