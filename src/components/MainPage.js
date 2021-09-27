@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from './NavBar/NavBar';
+import NavBar from './NavBar';
 import PropTypes from 'prop-types';
 import BookCover from './BookCover';
 
