@@ -7,6 +7,7 @@ const NavBar = () => {
 
     return (
         <div className="list-books-title">
+        {/*The tittle*/}
         <h1>MyReads</h1>
         </div>
     )
